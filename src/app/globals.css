@@ -23,3 +23,20 @@ body {
 .custom-container-no-p {
   @apply container max-w-screen-2xl mx-auto;
 }
+
+.custom-scroll::-webkit-scrollbar {
+  width: 8px; /* width of the entire scrollbar */
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  @apply bg-primary-50; /* color of the tracking area */
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  @apply bg-primary/70; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary; /* color of the scroll thumb when hovering */
+}

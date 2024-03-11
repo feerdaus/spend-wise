@@ -22,8 +22,12 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               <LeftNav />
             </aside>
             <section className="col-span-9">
-              <header className="py-8"></header>
-              {children}
+              <header className="py-8 border-b-2 h-[10vh] border-primary/10"></header>
+              <div className="bg-primary-50 p-4 h-[90vh]">
+                <div className="rounded-xl p-4 shadow-lg bg-white h-full overflow-y-auto custom-scroll">
+                  {children}
+                </div>
+              </div>
             </section>
           </div>
         </main>
