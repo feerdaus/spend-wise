@@ -33,8 +33,8 @@ const NavItem: React.FC<NavItemProps> = ({ title, path, selected }) => {
 export const LeftNav = () => {
   const pathname = usePathname();
   return (
-    <div className="py-8 px-4 bg-primary/10 h-screen">
-      <h1 className="text-4xl font-bold text-primary">Expense Tracker</h1>
+    <div className="py-6 px-4 bg-primary/10 h-screen">
+      <h1 className="text-3xl font-bold text-primary">Expense Tracker</h1>
       <ul className="mt-12">
         {navItems.map((item) => (
           <NavItem

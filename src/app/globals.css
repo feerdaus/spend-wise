@@ -40,3 +40,41 @@ body {
 .custom-scroll::-webkit-scrollbar-thumb:hover {
   @apply bg-primary; /* color of the scroll thumb when hovering */
 }
+
+.btn {
+  @apply py-2 px-4 rounded-lg;
+}
+
+.btn-lg {
+  @apply py-4 px-6;
+}
+
+.btn-primary {
+  @apply text-white bg-primary hover:bg-opacity-80;
+}
+
+.btn-primary-outlined {
+  @apply text-primary border-solid border-primary/50 border hover:border-primary hover:bg-primary/10;
+}
+
+.form-control {
+  @apply block  w-full focus:outline-none border border-grey text-base leading-5 rounded-lg px-3.5 py-2.5;
+  transition: box-shadow, border-color 500ms ease-in-out;
+
+  &-no-border {
+    @apply block  w-full focus:outline-none text-base leading-5 bg-transparent;
+    transition: box-shadow, 500ms ease-in-out;
+  }
+
+  &-error {
+    @apply block w-full focus:outline-none border border-red-600 text-base leading-5 rounded px-3.5 py-2.5;
+  }
+}
+
+.form-control:focus {
+  box-shadow: rgba(67, 136, 131, 0.25) 0 0 0 0.2rem;
+}
+
+.form-label {
+  @apply text-sm leading-4;
+}

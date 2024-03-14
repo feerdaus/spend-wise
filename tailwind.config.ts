@@ -16,6 +16,7 @@ const config: Config = {
       colors: {
         primary: "#438883",
         "primary-50": "#EEF8F7",
+        grey: "#D0D5DD",
       },
       screens: {
         sm: "640px",

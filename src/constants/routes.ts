@@ -24,4 +24,14 @@ export const Routes = {
     fullPath: "/dashboard/profile",
     name: "Profile",
   },
+  signIn: {
+    path: "/signin",
+    fullPath: "/auth/signin",
+    name: "Sign In",
+  },
+  signUp: {
+    path: "/signup",
+    fullPath: "/auth/signup",
+    name: "Sign Up",
+  },
 };
