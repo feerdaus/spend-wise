@@ -1,22 +1,13 @@
 "use server";
 
-import { db } from "@/db";
-import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
+import * as auth from "@/auth";
 
-// interface CreateCategoryData {
-//   name: string;
-//   allocatedAmount: number;
-//   user:
-// }
+export async function signIn() {
+  return auth.signIn("google");
+}
 
-export async function createUser(name: string, email: string) {
-  await db.user.create({
-    data: {
-      name,
-      email,
-    },
-  });
+export async function signOut() {
+  return auth.signOut();
 }
 
 // export async function createCategory(name: string, allocatedAmount: number) {

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "../../globals.css";
 import { roboto, inter } from "@/utils/font";
 import { LeftNav } from "@/components";
+import Providers from "@/app/providers";
 
 export const metadata: Metadata = {
   title: "Dashboard - Expense Tracker",
@@ -25,7 +26,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
               <header className="py-8 border-b-2 h-[10vh] border-primary/10"></header>
               <div className="bg-primary-50 p-4 h-[90vh]">
                 <div className="rounded-xl p-4 shadow-lg bg-white h-full overflow-y-auto custom-scroll">
-                  {children}
+                  <Providers>{children}</Providers>
                 </div>
               </div>
             </section>
