@@ -14,6 +14,11 @@ export const Routes = {
     fullPath: "/dashboard/categories",
     name: "Categories",
   },
+  newCategories: {
+    path: "/dashboard/categories",
+    fullPath: "/dashboard/categories/new",
+    name: "New Category",
+  },
   expenses: {
     path: "/expenses",
     fullPath: "/dashboard/expenses",

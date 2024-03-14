@@ -1,6 +1,7 @@
 import { ProfileFormState, uploadToImageKit } from "@/actions";
 import { auth } from "@/auth";
 import { ProfileForm } from "@/components";
+import { Routes } from "@/constants";
 import { db } from "@/db";
 import { redirect } from "next/navigation";
 
@@ -55,7 +56,7 @@ export default async function Dashboard() {
       },
     });
 
-    redirect("/dashboard");
+    redirect(Routes.dashboard.fullPath);
   };
 
   return (

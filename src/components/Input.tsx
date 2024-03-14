@@ -34,6 +34,7 @@ export const Input: React.FC<InputProps> = ({
         <input
           id={name}
           name={name}
+          placeholder={placeholder}
           className={`form-control`}
           {...inputProps}
         />

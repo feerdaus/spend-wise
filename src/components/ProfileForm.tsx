@@ -24,44 +24,42 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
   });
 
   return (
-    <div>
-      <form className="max-w-sm" action={action}>
-        <Input
-          name="name"
-          label="Name"
-          inputProps={{ defaultValue: session?.user?.name || "" }}
-          inputContainerProps={{ className: "mb-4" }}
-        />
-        <Input
-          name="email"
-          label="Email"
-          inputProps={{
-            type: "email",
-            defaultValue: session?.user?.email || "",
-            disabled: true,
-          }}
-          inputContainerProps={{ className: "mb-4" }}
-        />
+    <form className="max-w-sm" action={action}>
+      <Input
+        name="name"
+        label="Name"
+        inputProps={{ defaultValue: session?.user?.name || "" }}
+        inputContainerProps={{ className: "mb-4" }}
+      />
+      <Input
+        name="email"
+        label="Email"
+        inputProps={{
+          type: "email",
+          defaultValue: session?.user?.email || "",
+          disabled: true,
+        }}
+        inputContainerProps={{ className: "mb-4" }}
+      />
 
-        <Input
-          name="avatar"
-          label="Avatar"
-          inputProps={{
-            type: "file",
-          }}
-          inputContainerProps={{ className: "mb-8" }}
-        />
+      <Input
+        name="avatar"
+        label="Avatar"
+        inputProps={{
+          type: "file",
+        }}
+        inputContainerProps={{ className: "mb-8" }}
+      />
 
-        {Boolean(formState?.message) && (
-          <div className="my-4">
-            <AlertDanger message={formState.message} />
-          </div>
-        )}
+      {Boolean(formState?.message) && (
+        <div className="my-4">
+          <AlertDanger message={formState.message} />
+        </div>
+      )}
 
-        <button className="btn btn-primary" type="submit">
-          Update Profile
-        </button>
-      </form>
-    </div>
+      <button className="btn btn-primary" type="submit">
+        Update Profile
+      </button>
+    </form>
   );
 };

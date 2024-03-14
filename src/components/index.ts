@@ -5,3 +5,4 @@ export * from "./SignInForm";
 export * from "./SignUpForm";
 export * from "./Header";
 export * from "./ProfileForm";
+export * from "./AddCategoryForm";

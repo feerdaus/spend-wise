@@ -40,7 +40,11 @@ export const LeftNav = () => {
           <NavItem
             key={item.title}
             {...item}
-            selected={pathname === item.path}
+            selected={
+              item.path !== "/dashboard"
+                ? pathname.startsWith(item.path)
+                : pathname === item.path
+            }
           />
         ))}
       </ul>
