@@ -1,7 +1,8 @@
 "use server";
 
 import * as auth from "@/auth";
-import { validationSchema } from "@/constants";
+import { Routes, validationSchema } from "@/constants";
+import { redirect } from "next/navigation";
 
 export type AllowedProviders = "email" | "google";
 
@@ -23,7 +24,8 @@ export const signIn = async (formState: FormState, formData: FormData) => {
   const provider = formData.get("provider");
   switch (provider) {
     case "email":
-      return await handleEmailLogin(formData);
+      handleEmailLogin(formData);
+      redirect(Routes.checkEmail.fullPath);
     case "google":
       return auth.signIn("google");
     default:
