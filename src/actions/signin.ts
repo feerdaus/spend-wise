@@ -20,12 +20,12 @@ const handleEmailLogin = async (formData: FormData) => {
   }
 };
 
-export const signIn = async (formState: FormState, formData: FormData) => {
+export const signIn = (formState: FormState, formData: FormData) => {
   const provider = formData.get("provider");
   switch (provider) {
     case "email":
-      handleEmailLogin(formData);
-      redirect(Routes.checkEmail.fullPath);
+      return handleEmailLogin(formData);
+    // redirect(Routes.checkEmail.fullPath);
     case "google":
       return auth.signIn("google");
     default:
