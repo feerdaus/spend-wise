@@ -2,20 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-  }
-}
-
-body {
-}
-
-@layer utilities {
-}
-
 .custom-container {
   @apply container max-w-screen-xl mx-auto px-4 md:px-6;
 }
@@ -77,4 +63,20 @@ body {
 
 .form-label {
   @apply text-sm leading-4;
+}
+
+.hr {
+  display: flex;
+  align-items: center;
+  margin: 2rem auto 1rem auto;
+  text-align: center;
+  color: #438883;
+}
+
+.hr::before,
+.hr::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #d0d5dd;
+  margin: 0 0.5rem;
 }

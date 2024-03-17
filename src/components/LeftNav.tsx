@@ -1,5 +1,6 @@
 "use client";
 import { Routes } from "@/constants";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -34,7 +35,19 @@ export const LeftNav = () => {
   const pathname = usePathname();
   return (
     <div className="py-6 px-4 bg-primary/10 h-screen">
-      <h1 className="text-3xl font-bold text-primary">Expense Tracker</h1>
+      <div className="flex">
+        <Image
+          alt="spend-wise logo"
+          src="/logo.png"
+          width={70}
+          height={70}
+          className="mr-4"
+        />
+        <div>
+          <h1 className="text-3xl font-bold text-primary">SpendWise</h1>
+          <i className="text-lg">Your everyday expense tracker</i>
+        </div>
+      </div>
       <ul className="mt-12">
         {navItems.map((item) => (
           <NavItem
