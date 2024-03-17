@@ -1,6 +1,6 @@
 import { ProfileFormState } from "@/actions";
 import { auth } from "@/auth";
-import { AddCategoryForm } from "@/components";
+import { AddCategoryForm, BackArrowIcon } from "@/components";
 import { Routes } from "@/constants";
 import { db } from "@/db";
 import Link from "next/link";
@@ -43,9 +43,13 @@ export default async function NewCategoryPage() {
 
   return (
     <div>
-      <div className="flex">
-        <Link href={Routes.categories.fullPath}>{"←"}</Link>
-        <h2 className="font-semibold text-xl mb-4">New Expense Category</h2>
+      <div className="flex gap-4 items-center mb-4">
+        <Link href={Routes.categories.fullPath}>
+          <div className="h-4 w-4">
+            <BackArrowIcon />
+          </div>
+        </Link>
+        <h2 className="font-semibold text-xl">New Expense Category</h2>
       </div>
       <AddCategoryForm addCategory={addCategory} />
     </div>

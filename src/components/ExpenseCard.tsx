@@ -1,5 +1,5 @@
 import Link from "next/link";
-import ShoppingIcon from "./Icons/ShoppingIcon";
+import { ShoppingIcon } from "./Icons";
 
 interface ExpenseCardProps {
   title: string;

@@ -27,10 +27,12 @@ export const Input: React.FC<InputProps> = ({
 }) => {
   return (
     <div {...inputContainerProps}>
-      <label htmlFor={name} className="text-sm">
-        {label}
-      </label>
-      <div className="relative mt-1.5">
+      {Boolean(label) && (
+        <label htmlFor={name} className="text-sm">
+          {label}
+        </label>
+      )}
+      <div className={`relative ${label ? "mt-1.5" : ""}`}>
         <input
           id={name}
           name={name}

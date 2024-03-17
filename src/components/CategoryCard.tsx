@@ -1,4 +1,5 @@
-import React from "react";
+import { categoryColors, classifyNumber } from "@/constants";
+import React, { useMemo } from "react";
 
 interface CategoryCardProps {
   category: string;
@@ -13,8 +14,17 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
   expense,
   category,
 }) => {
+  const color = useMemo(() => {
+    return categoryColors[classifyNumber(balance, allocatedAmount)];
+  }, [balance, allocatedAmount]);
+
+  console.log(category, color);
+
   return (
-    <div className="rounded-lg w-full md:w-1/5 md:min-w-80 md:max-w-96 dark-bg bx-shadow px-4 py-5 max-w-md text-white">
+    <div
+      style={{ backgroundColor: color }}
+      className="rounded-lg w-full md:w-1/5 md:min-w-80 md:max-w-96 bg-[color] bx-shadow px-4 py-5 max-w-md"
+    >
       <div className="flex justify-between">
         <h3 className="text-2xl font-semibold ">{category}</h3>
         <div>

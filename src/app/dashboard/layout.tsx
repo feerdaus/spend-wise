@@ -26,24 +26,20 @@ export default async function DashboardLayout({
   }
 
   return (
-    <html lang="en">
-      <body className={`${roboto.variable} ${inter.variable} font-inter`}>
-        <main className="">
-          <div className="grid grid-cols-12">
-            <aside className="col-span-3">
-              <LeftNav />
-            </aside>
-            <section className="col-span-9">
-              <Header session={session} />
-              <div className="bg-primary-50 p-4 h-[90vh]">
-                <div className="rounded-xl p-4 shadow-lg bg-white h-full overflow-y-auto custom-scroll">
-                  <Providers>{children}</Providers>
-                </div>
-              </div>
-            </section>
+    <main className="">
+      <div className="grid grid-cols-12">
+        <aside className="col-span-3">
+          <LeftNav />
+        </aside>
+        <section className="col-span-9">
+          <Header session={session} />
+          <div className="bg-primary-50 p-4 h-[90vh]">
+            <div className="rounded-xl p-4 shadow-lg bg-white h-full overflow-y-auto custom-scroll">
+              <Providers>{children}</Providers>
+            </div>
           </div>
-        </main>
-      </body>
-    </html>
+        </section>
+      </div>
+    </main>
   );
 }

@@ -6,3 +6,7 @@ export * from "./SignUpForm";
 export * from "./Header";
 export * from "./ProfileForm";
 export * from "./AddCategoryForm";
+export * from "./AddExpenseForm";
+export * from "./Icons";
+export * from "./types";
+export * from "./ManageExpenseForm";

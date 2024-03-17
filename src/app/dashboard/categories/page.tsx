@@ -1,5 +1,6 @@
-import { CategoryCard } from "@/components";
-import { Routes } from "@/constants";
+import { auth } from "@/auth";
+import { Category, CategoryCard } from "@/components";
+import { Routes, categoryColors } from "@/constants";
 import { db } from "@/db";
 import Link from "next/link";
 
@@ -8,12 +9,40 @@ import Link from "next/link";
 // }
 
 export default async function CategoriesPage() {
-  const allCategories = await db.expenseCategory.findMany();
+  const session = await auth();
+  const userQuery = {
+    // @ts-ignore
+    userId: session?.user?.id,
+  };
+  const allCategories: Category[] = await db.expenseCategory.findMany({
+    where: userQuery,
+  });
+  const allExpenses = await db.expense.findMany({
+    where: userQuery,
+  });
+  let categories: Record<string, number> = {};
+  allExpenses.forEach((expense) => {
+    categories[expense.categoryId] =
+      (categories[expense.categoryId] || 0) + expense.amount;
+  });
+  allCategories.forEach((category) => {
+    category.expenses = categories[category.id];
+  });
 
   return (
     <div>
       <div className="flex justify-between items-center">
         <h2 className="font-medium text-xl">All Categories</h2>
+        <div>
+          <div className="flex gap-4 flex-wrap">
+            {Object.entries(categoryColors).map(([name, col]) => (
+              <div className="flex flex-col items-center">
+                <div style={{ backgroundColor: col }} className="h-4 w-4" />
+                <span className="capitalize">{name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
         <Link href={Routes.newCategories.fullPath} className="btn btn-primary">
           New Category
         </Link>
@@ -27,8 +56,8 @@ export default async function CategoriesPage() {
               key={category.id}
               category={category.name}
               allocatedAmount={category.allocatedAmount}
-              balance={category.allocatedAmount}
-              expense={category.allocatedAmount}
+              balance={category.allocatedAmount - (category.expenses || 0)}
+              expense={category.expenses || 0}
             />
           ))}
       </div>
