@@ -35,17 +35,17 @@ export const LeftNav = () => {
   const pathname = usePathname();
   return (
     <div className="py-6 px-4 bg-primary/10 h-screen">
-      <div className="flex">
+      <div className="flex items-center">
         <Image
           alt="spend-wise logo"
           src="/logo.png"
-          width={70}
-          height={70}
-          className="mr-4"
+          width={64}
+          height={64}
+          className="mr-4 h-16 w-16"
         />
         <div>
-          <h1 className="text-3xl font-bold text-primary">SpendWise</h1>
-          <i className="text-lg">Your everyday expense tracker</i>
+          <h1 className="text-2xl font-bold text-primary">SpendWise</h1>
+          <i className="text-md">Your everyday expense tracker</i>
         </div>
       </div>
       <ul className="mt-12">
