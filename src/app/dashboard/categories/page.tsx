@@ -9,46 +9,25 @@ import Link from "next/link";
 
 export default async function CategoriesPage() {
   const allCategories = await db.expenseCategory.findMany();
-  console.log(allCategories);
+
   return (
     <div>
-      <h2 className="font-medium text-xl">All Categories</h2>
-      <hr className="my-8" />
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <div className="col-span-1">
-          <CategoryCard
-            category="Shopping"
-            allocatedAmount={5678}
-            balance={34634}
-            expense={4244}
-          />
-        </div>
-        <div className="col-span-1">
-          <CategoryCard
-            category="Shopping"
-            allocatedAmount={5678}
-            balance={34634}
-            expense={4244}
-          />
-        </div>
-        <div className="col-span-1">
-          <CategoryCard
-            category="Shopping"
-            allocatedAmount={5678}
-            balance={34634}
-            expense={4244}
-          />
-        </div>
-      </section>
-      <Link href={Routes.newCategories.fullPath} className="btn btn-primary">
-        New Category
-      </Link>
-      <div className="grid">
+      <div className="flex justify-between items-center">
+        <h2 className="font-medium text-xl">All Categories</h2>
+        <Link href={Routes.newCategories.fullPath} className="btn btn-primary">
+          New Category
+        </Link>
+      </div>
+      <hr className="my-6" />
+
+      <div className="flex gap-4 flex-wrap">
         {allCategories.map((category) => (
           <CategoryCard
             key={category.id}
-            name={category.name}
-            allocatedAmount={`${category.allocatedAmount}`}
+            category={category.name}
+            allocatedAmount={category.allocatedAmount}
+            balance={category.allocatedAmount}
+            expense={category.allocatedAmount}
           />
         ))}
       </div>
