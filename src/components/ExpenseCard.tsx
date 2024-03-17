@@ -1,7 +1,19 @@
 import Link from "next/link";
 import ShoppingIcon from "./Icons/ShoppingIcon";
 
-const ExpenseCard = () => {
+interface ExpenseCardProps {
+  title: string;
+  description: string;
+  amount: string;
+  date: string;
+}
+
+export const ExpenseCard: React.FC<ExpenseCardProps> = ({
+  title,
+  description,
+  amount,
+  date,
+}) => {
   return (
     <Link
       href="/"
@@ -12,16 +24,14 @@ const ExpenseCard = () => {
           <ShoppingIcon />
         </span>
         <div>
-          <p className="font-medium mb-3">Shopping</p>
-          <p className="text-grey-50">Shopping</p>
+          <p className="font-medium mb-3">{title}</p>
+          <p className="text-grey-50">{description}</p>
         </div>
       </div>
       <div>
-        <p className="text-red-600 font-medium text-lg mb-2">-$155</p>
-        <p className="text-grey-50">date</p>
+        <p className="text-red-600 font-medium text-lg mb-2">-${amount}</p>
+        <p className="text-grey-50">{date}</p>
       </div>
     </Link>
   );
 };
-
-export default ExpenseCard;

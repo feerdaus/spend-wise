@@ -1,3 +1,4 @@
+import { CategoryCard } from "@/components";
 import { Routes } from "@/constants";
 import { db } from "@/db";
 import Link from "next/link";
@@ -11,6 +12,15 @@ export default async function CategoriesPage() {
       <Link href={Routes.newCategories.fullPath} className="btn btn-primary">
         New Category
       </Link>
+      <div className="grid">
+        {allCategories.map((category) => (
+          <CategoryCard
+            key={category.id}
+            name={category.name}
+            allocatedAmount={`${category.allocatedAmount}`}
+          />
+        ))}
+      </div>
     </div>
   );
 }

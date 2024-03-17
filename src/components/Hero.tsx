@@ -1,11 +1,10 @@
 import { Hero_Img, Routes } from "@/constants";
 import Link from "next/link";
-import ExpenseCard from "./ExpenseCard";
 import TopNav from "./TopNav";
 
 export const Hero = () => {
   return (
-    <section className="custom-container min-h-screen md:h-80vh relative">
+    <section className="custom-container min-h-screen md:h-screen md:min-h-[700px] relative">
       <TopNav />
       <div className="flex flex-col-reverse md:flex-row md:justify-between md:items-center md:h-full">
         <div className="w-full md:w-1/2 p-10 text-center md:text-left">
@@ -22,10 +21,9 @@ export const Hero = () => {
           </Link>
         </div>
         <div className="w-full md:w-1/2 text-center inline h-1/2 md:h-full">
-          <img className="w-full md:max-h-full" src={Hero_Img} />
+          <img className="w-auto mx-auto h-full" src={Hero_Img} />
         </div>
       </div>
-      <ExpenseCard />
     </section>
   );
 };
