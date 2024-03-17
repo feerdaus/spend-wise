@@ -13,8 +13,8 @@ export const SignInForm = () => {
   });
 
   return (
-    <section className="custom-container h-screen flex flex-col justify-center">
-      <div className="max-w-md mx-auto">
+    <section className="h-screen flex flex-col justify-center">
+      <div className="max-w-md mx-auto px-4">
         <h1 className="text-2xl text-primary font-bold mb-8">
           Sign In To Track Your Expenses
         </h1>
@@ -45,7 +45,7 @@ export const SignInForm = () => {
             inputProps={{ type: "email" }}
             inputContainerProps={{ className: "mb-8" }}
           />
-          {Boolean(formState.message) && (
+          {Boolean(formState?.message) && (
             <div className="my-4">
               <AlertDanger message={formState.message} />
             </div>

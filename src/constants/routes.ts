@@ -39,4 +39,9 @@ export const Routes = {
     fullPath: "/auth/signup",
     name: "Sign Up",
   },
+  checkEmail: {
+    path: "/check-email",
+    fullPath: "/auth/check-email",
+    name: "Check Email",
+  },
 };
