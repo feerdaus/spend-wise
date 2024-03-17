@@ -3,6 +3,7 @@ import { Routes } from "@/constants";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FilterForm } from "./FilterForm";
 
 interface NavItemProps {
   title: string;
@@ -61,6 +62,8 @@ export const LeftNav = () => {
           />
         ))}
       </ul>
+      <hr className="my-6" />
+      <FilterForm />
     </div>
   );
 };
