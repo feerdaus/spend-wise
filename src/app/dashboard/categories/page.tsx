@@ -21,15 +21,16 @@ export default async function CategoriesPage() {
       <hr className="my-6" />
 
       <div className="flex gap-4 flex-wrap">
-        {allCategories.map((category) => (
-          <CategoryCard
-            key={category.id}
-            category={category.name}
-            allocatedAmount={category.allocatedAmount}
-            balance={category.allocatedAmount}
-            expense={category.allocatedAmount}
-          />
-        ))}
+        {Boolean(allCategories.length) &&
+          allCategories.map((category) => (
+            <CategoryCard
+              key={category.id}
+              category={category.name}
+              allocatedAmount={category.allocatedAmount}
+              balance={category.allocatedAmount}
+              expense={category.allocatedAmount}
+            />
+          ))}
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
 export default function Dashboard() {
   return (
     <div>
-      <h1>Expenses</h1>
+      <div>
+        <h2 className="font-medium text-xl">All Expenses</h2>
+      </div>
+      <hr className="my-6" />
     </div>
   );
 }

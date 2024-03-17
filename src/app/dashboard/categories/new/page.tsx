@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { AddCategoryForm } from "@/components";
 import { Routes } from "@/constants";
 import { db } from "@/db";
+import Link from "next/link";
 import { redirect } from "next/navigation";
 
 export default async function NewCategoryPage() {
@@ -42,7 +43,10 @@ export default async function NewCategoryPage() {
 
   return (
     <div>
-      <h2 className="font-semibold text-xl mb-4">New Expense Category</h2>
+      <div className="flex">
+        <Link href={Routes.categories.fullPath}>{"←"}</Link>
+        <h2 className="font-semibold text-xl mb-4">New Expense Category</h2>
+      </div>
       <AddCategoryForm addCategory={addCategory} />
     </div>
   );
