@@ -1,9 +1,11 @@
 "use client";
 
 import * as actions from "@/actions";
+import { Routes } from "@/constants";
+import Link from "next/link";
 import { useFormState } from "react-dom";
-import { Input } from "./Input";
 import { AlertDanger } from "./Alert";
+import { Input } from "./Input";
 
 export const SignInForm = () => {
   const [formState, action] = useFormState(actions.signIn, {
@@ -32,8 +34,7 @@ export const SignInForm = () => {
             Continue With Google
           </button>
         </form>
-
-        <p className="text-center  my-4">or</p>
+        <div className="hr">or</div>
 
         <form className="mx-auto w-full" action={action}>
           <input name="provider" defaultValue="email" type="hidden" />
@@ -56,6 +57,11 @@ export const SignInForm = () => {
             Sign In
           </button>
         </form>
+        <div className="mt-3">
+          <Link href={Routes.home.fullPath} className="hover:underline text-lg">
+            Home
+          </Link>
+        </div>
       </div>
     </section>
   );
