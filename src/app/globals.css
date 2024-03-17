@@ -80,3 +80,20 @@
   border-bottom: 1px solid #d0d5dd;
   margin: 0 0.5rem;
 }
+
+.gradient-bg {
+  background-image: linear-gradient(to right, #429690, #2a7c76);
+}
+
+.dark-bg {
+  /* background-image: radial-gradient(
+    #2f7e79 30%,
+    #2a7c76 20%,
+    #429690 10%,
+    #1b5c58 60%
+  ); */
+  background-image: linear-gradient(to right, #1b5c58, #2f7e79);
+}
+.bx-shadow {
+  box-shadow: 0 10px 20px rgba(27, 92, 88, 0.5);
+}
