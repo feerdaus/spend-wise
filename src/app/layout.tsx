@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { roboto, inter } from "@/utils/font";
+import { GlobalContextProvider } from "@/context/GlobalContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,7 +18,7 @@ export default function RootLayout({
       <body
         className={`${roboto.variable} ${inter.variable} font-inter bg-slate-50`}
       >
-        {children}
+        <GlobalContextProvider>{children}</GlobalContextProvider>
       </body>
     </html>
   );

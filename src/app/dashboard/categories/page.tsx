@@ -8,7 +8,7 @@ import Link from "next/link";
 //   allocatedamount:35346
 // }
 
-export default async function CategoriesPage() {
+export default async function CategoriesPage(params: any) {
   const session = await auth();
   const userQuery = {
     // @ts-ignore
@@ -17,8 +17,23 @@ export default async function CategoriesPage() {
   const allCategories: Category[] = await db.expenseCategory.findMany({
     where: userQuery,
   });
+  const startDate =
+    params?.searchParams?.startDate ||
+    new Date(new Date().setDate(1)).toISOString();
+  const endDate =
+    params?.searchParams?.endDate ||
+    new Date(new Date().setDate(31)).toISOString();
+
   const allExpenses = await db.expense.findMany({
-    where: userQuery,
+    where: {
+      ...userQuery,
+      AND: {
+        date: {
+          gte: startDate,
+          lte: endDate,
+        },
+      },
+    },
   });
   let categories: Record<string, number> = {};
   allExpenses.forEach((expense) => {
@@ -36,7 +51,7 @@ export default async function CategoriesPage() {
         <div>
           <div className="flex gap-4 flex-wrap">
             {Object.entries(categoryColors).map(([name, col]) => (
-              <div className="flex flex-col items-center">
+              <div key={name + col} className="flex flex-col items-center">
                 <div style={{ backgroundColor: col }} className="h-4 w-4" />
                 <span className="capitalize">{name}</span>
               </div>

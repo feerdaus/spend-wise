@@ -6,7 +6,7 @@ import { db } from "@/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-export default async function Dashboard() {
+export default async function ExpensePage(params: any) {
   const session = await auth();
   const allCategories = await db.expenseCategory.findMany({
     where: {
@@ -14,10 +14,23 @@ export default async function Dashboard() {
       userId: session?.user?.id,
     },
   });
+  const startDate =
+    params?.searchParams?.startDate ||
+    new Date(new Date().setDate(1)).toISOString();
+  const endDate =
+    params?.searchParams?.endDate ||
+    new Date(new Date().setDate(31)).toISOString();
+
   const allExpenses = await db.expense.findMany({
     where: {
       // @ts-ignore
       userId: session?.user?.id,
+      AND: {
+        date: {
+          gte: startDate,
+          lte: endDate,
+        },
+      },
     },
     orderBy: { date: "desc" },
   });

@@ -2,8 +2,9 @@ import * as actions from "@/actions";
 import { auth } from "@/auth";
 import { Category, Dashboard, ExpenseCard } from "@/components";
 import { db } from "@/db";
+import { Storage, getItem } from "@/utils/localStorage";
 
-export default async function DashboardPage() {
+export default async function DashboardPage(params: any) {
   const session = await auth();
   const userQuery = {
     // @ts-ignore
@@ -12,8 +13,23 @@ export default async function DashboardPage() {
   const allCategories: Category[] = await db.expenseCategory.findMany({
     where: userQuery,
   });
+  const startDate =
+    params?.searchParams?.startDate ||
+    new Date(new Date().setDate(1)).toISOString();
+  const endDate =
+    params?.searchParams?.endDate ||
+    new Date(new Date().setDate(31)).toISOString();
+
   const allExpenses = await db.expense.findMany({
-    where: userQuery,
+    where: {
+      ...userQuery,
+      AND: {
+        date: {
+          gte: startDate,
+          lte: endDate,
+        },
+      },
+    },
     orderBy: { date: "desc" },
   });
   let categories: Record<string, number> = {};
