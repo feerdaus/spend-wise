@@ -27,7 +27,7 @@ export const AddExpenseForm: React.FC<AddExpenseFormProps> = ({
 
   return (
     <form className="" action={action}>
-      <div className="flex gap-4">
+      <div className="md:flex gap-4">
         <Input
           name="description"
           placeholder="Expense description"

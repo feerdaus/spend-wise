@@ -49,7 +49,7 @@ export const ManageExpenseForm: React.FC<ManageExpenseFormProps> = ({
 
   return (
     <form
-      className=""
+      className="mb-4 md:mb-0"
       onSubmit={(e) => {
         e.preventDefault();
         const formData = new FormData(e.target as HTMLFormElement);
@@ -62,7 +62,7 @@ export const ManageExpenseForm: React.FC<ManageExpenseFormProps> = ({
       // }}
     >
       <input name="id" type="hidden" defaultValue={id} />
-      <div className="flex gap-4">
+      <div className="md:flex gap-4">
         <Input
           name="description"
           placeholder="Expense description"
@@ -115,7 +115,7 @@ export const ManageExpenseForm: React.FC<ManageExpenseFormProps> = ({
               )}
             </button>
           ) : (
-            <div className="flex h-full gap-4 items-center">
+            <div className="flex mt-1 md:mt-0 h-full gap-4 items-center">
               <button onClick={handleEdit}>
                 <div className="h-6 w-6 text-primary">
                   <EditIcon />
