@@ -68,8 +68,8 @@ export const options1 = {
 
 export const Dashboard: React.FC<DashboardProps> = ({ data1, data2 }) => {
   return (
-    <div className="grid grid-cols-12 gap-x-12">
-      <div className="col-span-5">
+    <div className="md:grid grid-cols-12 gap-x-12">
+      <div className="col-span-5 mb-6 md:mb-0">
         <Pie height={300} options={options1} data={data1} />
       </div>
       <div className="col-span-5">

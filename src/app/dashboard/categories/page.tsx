@@ -44,25 +44,29 @@ export default async function CategoriesPage(params: any) {
     category.expenses = categories[category.id];
   });
 
+  const legend = (
+    <div className="flex justify-evenly gap-4 flex-wrap">
+      {Object.entries(categoryColors).map(([name, col]) => (
+        <div key={name + col} className="flex flex-col items-center">
+          <div style={{ backgroundColor: col }} className="h-4 w-4" />
+          <span className="capitalize">{name}</span>
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <div>
       <div className="flex justify-between items-center">
         <h2 className="font-medium text-xl">All Categories</h2>
-        <div>
-          <div className="flex gap-4 flex-wrap">
-            {Object.entries(categoryColors).map(([name, col]) => (
-              <div key={name + col} className="flex flex-col items-center">
-                <div style={{ backgroundColor: col }} className="h-4 w-4" />
-                <span className="capitalize">{name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
+        <div className="hidden md:block">{legend}</div>
         <Link href={Routes.newCategories.fullPath} className="btn btn-primary">
           New Category
         </Link>
       </div>
       <hr className="my-6" />
+
+      <div className="md:hidden mb-8">{legend}</div>
 
       <div className="flex gap-4 flex-wrap">
         {Boolean(allCategories.length) &&

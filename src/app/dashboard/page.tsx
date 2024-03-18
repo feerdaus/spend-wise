@@ -93,9 +93,9 @@ export default async function DashboardPage(params: any) {
       <Dashboard data1={chartData} data2={barChartData} />
       <div className="mt-8">
         <h3 className="text-lg font-semibold">Recent Expenses</h3>
-        <div className="flex gap-4 flex-wrap">
+        <div className="md:flex gap-4 flex-wrap">
           {allExpenses.slice(0, 10).map((expense) => (
-            <div key={expense.id} className="w-5/12">
+            <div key={expense.id} className="w-full md:w-5/12">
               <ExpenseCard
                 amount={expense.amount.toString()}
                 title={expense.description}
