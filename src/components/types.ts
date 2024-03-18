@@ -6,4 +6,5 @@ export interface Category {
   createdAt: Date;
   updatedAt: Date;
   expenses?: number;
+  color?: string;
 }

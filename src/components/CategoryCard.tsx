@@ -18,8 +18,6 @@ export const CategoryCard: React.FC<CategoryCardProps> = ({
     return categoryColors[classifyNumber(balance, allocatedAmount)];
   }, [balance, allocatedAmount]);
 
-  console.log(category, color);
-
   return (
     <div
       style={{ backgroundColor: color }}

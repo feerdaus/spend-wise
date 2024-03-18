@@ -10,3 +10,5 @@ export * from "./AddExpenseForm";
 export * from "./Icons";
 export * from "./types";
 export * from "./ManageExpenseForm";
+export * from "./Dashboard";
+export * from "./ExpenseCard";

@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { AddExpenseForm, ManageExpenseForm } from "@/components";
 import { Routes } from "@/constants";
 import { db } from "@/db";
+import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
 export default async function Dashboard() {
@@ -18,6 +19,7 @@ export default async function Dashboard() {
       // @ts-ignore
       userId: session?.user?.id,
     },
+    orderBy: { date: "desc" },
   });
 
   const addExpense = async (
@@ -110,6 +112,9 @@ export default async function Dashboard() {
       },
     });
 
+    revalidatePath(Routes.expenses.fullPath);
+    revalidatePath(Routes.dashboard.fullPath);
+    revalidatePath(Routes.categories.fullPath);
     redirect(Routes.expenses.fullPath);
   };
 

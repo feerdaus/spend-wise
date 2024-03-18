@@ -9,7 +9,7 @@ import { ProfileFormState } from "@/actions";
 import { useCallback, useState } from "react";
 import { EditIcon } from "./Icons/EditIcon";
 import { DeleteIcon } from "./Icons/DeleteIcon";
-import { useRouter } from "next/navigation";
+import * as actions from "@/actions";
 
 interface ManageExpenseFormProps {
   description: string;
@@ -44,6 +44,8 @@ export const ManageExpenseForm: React.FC<ManageExpenseFormProps> = ({
   const handleEdit = useCallback(() => {
     setEditing(true);
   }, []);
+
+  const deleteExpenseAction = actions.deleteExpense.bind(null, id);
 
   return (
     <form
@@ -119,7 +121,7 @@ export const ManageExpenseForm: React.FC<ManageExpenseFormProps> = ({
                   <EditIcon />
                 </div>
               </button>
-              <button>
+              <button type="button" onClick={() => deleteExpenseAction()}>
                 <div className="h-6 w-6 text-red-500">
                   <DeleteIcon />
                 </div>

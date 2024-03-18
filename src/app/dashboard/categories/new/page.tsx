@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { AddCategoryForm, BackArrowIcon } from "@/components";
 import { Routes } from "@/constants";
 import { db } from "@/db";
+import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -38,6 +39,9 @@ export default async function NewCategoryPage() {
       },
     });
 
+    revalidatePath(Routes.expenses.fullPath);
+    revalidatePath(Routes.dashboard.fullPath);
+    revalidatePath(Routes.categories.fullPath);
     redirect(Routes.categories.fullPath);
   };
 
