@@ -27,11 +27,11 @@ export const Header: React.FC<HeaderProps> = ({ session }) => {
       {isMenuOpen && (
         <div
           onClick={handleMenuState(false)}
-          className="md:hidden transition-transform duration-500 absolute translate-x-280px left-0 top-0 w-full bg-primary/50 h-full"
+          className="md:hidden transition-transform duration-500 absolute translate-x-280px left-0 top-0 w-full bg-primary/30 h-full"
         />
       )}
       <aside
-        className={`w-5/6 max-w-full md:hidden border-r overflow-y-auto font-inter h-screen top-0 fixed border-gray-200 bg-white transition-transform duration-500 ${
+        className={`w-5/6 max-w-full md:hidden border-r overflow-y-auto font-inter h-screen z-50 top-0 fixed border-gray-200 bg-white transition-transform duration-500 ${
           !isMenuOpen
             ? "-translate-x-[400px] md:-translate-x-0"
             : "translate-x-0"
