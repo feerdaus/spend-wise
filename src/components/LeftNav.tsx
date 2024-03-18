@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { FilterForm } from "./FilterForm";
+import { CloseIcon } from "./Icons";
 
 interface NavItemProps {
   title: string;
@@ -50,6 +51,41 @@ export const LeftNav = () => {
         </div>
       </div>
       <ul className="mt-12">
+        {navItems.map((item) => (
+          <NavItem
+            key={item.title}
+            {...item}
+            selected={
+              item.path !== "/dashboard"
+                ? pathname.startsWith(item.path)
+                : pathname === item.path
+            }
+          />
+        ))}
+      </ul>
+      <hr className="my-6" />
+      <FilterForm />
+    </div>
+  );
+};
+
+interface MobileLeftNavProps {
+  handleMenuState: (state: boolean) => () => void;
+}
+
+export const MobileLeftNav: React.FC<MobileLeftNavProps> = ({
+  handleMenuState,
+}) => {
+  const pathname = usePathname();
+  return (
+    <div className="py-6 px-4 md:hidden bg-primary/10 h-screen">
+      <button
+        onClick={handleMenuState(false)}
+        className="text-primary block ml-auto h-6 w-6"
+      >
+        <CloseIcon />
+      </button>
+      <ul onClick={handleMenuState(false)} className="mt-8">
         {navItems.map((item) => (
           <NavItem
             key={item.title}

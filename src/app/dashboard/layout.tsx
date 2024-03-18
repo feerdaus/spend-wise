@@ -28,10 +28,10 @@ export default async function DashboardLayout({
   return (
     <main className="">
       <div className="grid grid-cols-12">
-        <aside className="col-span-3">
+        <aside className="col-span-3 hidden md:block">
           <LeftNav />
         </aside>
-        <section className="col-span-9">
+        <section className="col-span-12 md:col-span-9">
           <Header session={session} />
           <div className="bg-primary-50 p-4 h-[90vh]">
             <div className="rounded-xl p-4 shadow-lg bg-white h-full overflow-y-auto custom-scroll">
