@@ -7,7 +7,7 @@ interface ButtonProps {
 
 export const Button: React.FC<ButtonProps> = ({ text, className }) => {
   const { pending } = useFormStatus();
-  console.log(pending, "pending");
+
   return (
     <button type="submit" className={className || "btn btn-primary md:w-1/6"}>
       {pending ? (
