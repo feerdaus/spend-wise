@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useFormState } from "react-dom";
 import { AlertDanger } from "./Alert";
 import { Input } from "./Input";
+import { Button } from "./CustomButton";
 
 export const SignInForm = () => {
   const [formState, action] = useFormState(actions.signIn, {
@@ -50,12 +51,16 @@ export const SignInForm = () => {
               <AlertDanger message={formState.message} />
             </div>
           )}
-          <button
+          {/* <button
             type="submit"
             className="bg-primary font-semibold text-white w-full px-4 py-2 rounded"
           >
             Sign In
-          </button>
+          </button> */}
+          <Button
+            text="Sign In"
+            className="bg-primary font-semibold text-white w-full px-4 py-2 rounded"
+          />
         </form>
         <div className="mt-3">
           <Link href={Routes.home.fullPath} className="hover:underline text-lg">
