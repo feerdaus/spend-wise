@@ -4,6 +4,7 @@ import { ProfileFormState } from "@/actions";
 import { Input } from "./Input";
 import { useFormState } from "react-dom";
 import { AlertDanger } from "./Alert";
+import { Button } from "./CustomButton";
 
 interface AddCategoryFormProps {
   addCategory: (
@@ -41,7 +42,8 @@ export const AddCategoryForm: React.FC<AddCategoryFormProps> = ({
         </div>
       )}
 
-      <button className="btn btn-primary mt-6">Add Category</button>
+      {/* <button className="btn btn-primary mt-6">Add Category</button> */}
+      <Button text="Add Category" className="btn btn-primary mt-6 w-40" />
     </form>
   );
 };
