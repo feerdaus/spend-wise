@@ -1,8 +1,6 @@
-import * as actions from "@/actions";
 import { auth } from "@/auth";
 import { Category, Dashboard, ExpenseCard } from "@/components";
 import { db } from "@/db";
-import { Storage, getItem } from "@/utils/localStorage";
 
 export default async function DashboardPage(params: any) {
   const session = await auth();

@@ -6,10 +6,11 @@ import { Input } from "./Input";
 import Select from "./Select";
 import { Category } from "./types";
 import { ProfileFormState } from "@/actions";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { EditIcon } from "./Icons/EditIcon";
 import { DeleteIcon } from "./Icons/DeleteIcon";
 import * as actions from "@/actions";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface ManageExpenseFormProps {
   description: string;
@@ -56,10 +57,6 @@ export const ManageExpenseForm: React.FC<ManageExpenseFormProps> = ({
         action(formData);
         setEditing(false);
       }}
-      // action={(FormData) => {
-      //   action(FormData);
-      //   setEditing(false);
-      // }}
     >
       <input name="id" type="hidden" defaultValue={id} />
       <div className="md:flex gap-4">
@@ -121,10 +118,21 @@ export const ManageExpenseForm: React.FC<ManageExpenseFormProps> = ({
                   <EditIcon />
                 </div>
               </button>
-              <button type="button" onClick={() => deleteExpenseAction()}>
-                <div className="h-6 w-6 text-red-500">
-                  <DeleteIcon />
-                </div>
+              <button
+                type="button"
+                onClick={async () => {
+                  setLoading(true);
+                  await deleteExpenseAction();
+                  setLoading(false);
+                }}
+              >
+                {loading ? (
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary" />
+                ) : (
+                  <div className="h-6 w-6 text-red-500">
+                    <DeleteIcon />
+                  </div>
+                )}
               </button>
             </div>
           )}

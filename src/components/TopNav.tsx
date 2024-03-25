@@ -9,12 +9,19 @@ const TopNav = async () => {
     <nav className="px-6 py-4 left-0 top-0 absolute z-50 w-full">
       <div className="custom-container mx-auto">
         <div className="flex justify-between items-center">
-          <Image
-            src="/logo.png"
-            alt="Spend wise logo"
-            width={100}
-            height={100}
-          />
+          <div className="flex items-center">
+            <Image
+              alt="spend-wise logo"
+              src="/logo.png"
+              width={64}
+              height={64}
+              className="mr-4 h-16 w-16"
+            />
+            <div>
+              <h1 className="text-2xl font-bold text-primary">SpendWise</h1>
+              <i className="text-md">Your everyday expense tracker</i>
+            </div>
+          </div>
 
           <div className="">
             {session ? (

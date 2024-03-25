@@ -24,7 +24,7 @@ const NavItem: React.FC<NavItemProps> = ({ title, path, selected }) => {
     <Link href={path}>
       <li
         className={`text-xl font-semibold p-4 ${
-          selected ? "bg-primary text-white" : "bg-slate-50"
+          selected ? "bg-primary/20 border-l-4 border-primary" : "bg-slate-50"
         } hover:bg-primary hover:text-white rounded-md mb-4`}
       >
         {title}

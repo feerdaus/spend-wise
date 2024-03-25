@@ -6,6 +6,9 @@ import { Input } from "./Input";
 import Select from "./Select";
 import { Category } from "./types";
 import { ProfileFormState } from "@/actions";
+import { Button } from "./CustomButton";
+import { useCallback, useEffect, useRef } from "react";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 interface AddExpenseFormProps {
   categories: Category[];
@@ -21,12 +24,30 @@ export const AddExpenseForm: React.FC<AddExpenseFormProps> = ({
   addExpense,
   categories,
 }) => {
+  const params = useSearchParams();
+  const pathname = usePathname();
+  const router = useRouter();
+  const status = params.get("status");
+  const formRef = useRef<HTMLFormElement>(null);
   const [formState, action] = useFormState(addExpense, {
     message: "",
   });
 
+  const resetParams = useCallback(() => {
+    const newParams = new URLSearchParams(params.toString());
+    newParams.delete("status");
+    router.replace(`${pathname}?${newParams.toString()}`);
+  }, []);
+
+  useEffect(() => {
+    if (status === "success") {
+      formRef.current?.reset();
+      resetParams();
+    }
+  }, [status]);
+
   return (
-    <form className="" action={action}>
+    <form ref={formRef} className="" action={action}>
       <div className="md:flex gap-4">
         <Input
           name="description"
@@ -57,9 +78,7 @@ export const AddExpenseForm: React.FC<AddExpenseFormProps> = ({
             })),
           ]}
         />
-        <button type="submit" className="btn btn-primary md:w-1/6">
-          Add
-        </button>
+        <Button text="Add" className="btn btn-primary md:w-1/6" />
       </div>
       {Boolean(formState?.message) && (
         <div className="mt-4 max-w-[500px]">

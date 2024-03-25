@@ -80,7 +80,7 @@ export default async function ExpensePage(params: any) {
       },
     });
 
-    redirect(Routes.expenses.fullPath);
+    redirect(`${Routes.expenses.fullPath}?status=success`);
   };
 
   const updateExpense = async (
