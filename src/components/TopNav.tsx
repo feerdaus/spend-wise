@@ -6,7 +6,7 @@ import Link from "next/link";
 const TopNav = async () => {
   const session = await auth();
   return (
-    <nav className="px-6 py-4 left-0 top-0 absolute z-50 w-full">
+    <nav className="sm:px-6 py-4 left-0 top-0 absolute z-50 w-full">
       <div className="custom-container mx-auto">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
@@ -15,11 +15,15 @@ const TopNav = async () => {
               src="/logo.png"
               width={64}
               height={64}
-              className="mr-4 h-16 w-16"
+              className="mr-1 md:mr-4 h-16 w-16"
             />
             <div>
-              <h1 className="text-2xl font-bold text-primary">SpendWise</h1>
-              <i className="text-md">Your everyday expense tracker</i>
+              <h1 className="text-xl md:text-2xl font-bold text-primary">
+                SpendWise
+              </h1>
+              <i className="hidden sm:block md:text-md">
+                Your everyday expense tracker
+              </i>
             </div>
           </div>
 

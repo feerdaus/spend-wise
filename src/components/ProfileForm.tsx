@@ -1,9 +1,10 @@
 "use client";
-import { useFormState } from "react-dom";
-import { Input } from "./Input";
 import * as actions from "@/actions";
 import { Session } from "next-auth";
+import { useFormState } from "react-dom";
 import { AlertDanger } from "./Alert";
+import { Button } from "./CustomButton";
+import { Input } from "./Input";
 
 interface ProfileFormProps {
   session: Session | null;
@@ -57,9 +58,11 @@ export const ProfileForm: React.FC<ProfileFormProps> = ({
         </div>
       )}
 
-      <button className="btn btn-primary" type="submit">
-        Update Profile
-      </button>
+      <Button
+        text="Update Profile"
+        className="btn btn-primary"
+        disabled={false}
+      />
     </form>
   );
 };
