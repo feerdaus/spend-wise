@@ -2,6 +2,7 @@ import { auth } from "@/auth";
 import { Category, CategoryCard } from "@/components";
 import { Routes, categoryColors } from "@/constants";
 import { db } from "@/db";
+import { endOfMonth, startOfMonth } from "@/utils/date";
 import Link from "next/link";
 
 // const  categories = {
@@ -18,11 +19,8 @@ export default async function CategoriesPage(params: any) {
     where: userQuery,
   });
   const startDate =
-    params?.searchParams?.startDate ||
-    new Date(new Date().setDate(1)).toISOString();
-  const endDate =
-    params?.searchParams?.endDate ||
-    new Date(new Date().setDate(31)).toISOString();
+    params?.searchParams?.startDate || startOfMonth.toISOString();
+  const endDate = params?.searchParams?.endDate || endOfMonth.toISOString();
 
   const allExpenses = await db.expense.findMany({
     where: {

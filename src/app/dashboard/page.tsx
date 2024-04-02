@@ -1,6 +1,7 @@
 import { auth } from "@/auth";
 import { Category, Dashboard, ExpenseCard } from "@/components";
 import { db } from "@/db";
+import { endOfMonth, startOfMonth } from "@/utils/date";
 
 export default async function DashboardPage(params: any) {
   const session = await auth();
@@ -12,11 +13,8 @@ export default async function DashboardPage(params: any) {
     where: userQuery,
   });
   const startDate =
-    params?.searchParams?.startDate ||
-    new Date(new Date().setDate(1)).toISOString();
-  const endDate =
-    params?.searchParams?.endDate ||
-    new Date(new Date().setDate(31)).toISOString();
+    params?.searchParams?.startDate || startOfMonth.toISOString();
+  const endDate = params?.searchParams?.endDate || endOfMonth.toISOString();
 
   const allExpenses = await db.expense.findMany({
     where: {

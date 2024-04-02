@@ -3,6 +3,7 @@ import { auth } from "@/auth";
 import { AddExpenseForm, ManageExpenseForm } from "@/components";
 import { Routes } from "@/constants";
 import { db } from "@/db";
+import { endOfMonth, startOfMonth } from "@/utils/date";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -15,11 +16,8 @@ export default async function ExpensePage(params: any) {
     },
   });
   const startDate =
-    params?.searchParams?.startDate ||
-    new Date(new Date().setDate(1)).toISOString();
-  const endDate =
-    params?.searchParams?.endDate ||
-    new Date(new Date().setDate(31)).toISOString();
+    params?.searchParams?.startDate || startOfMonth.toISOString();
+  const endDate = params?.searchParams?.endDate || endOfMonth.toISOString();
 
   const allExpenses = await db.expense.findMany({
     where: {
